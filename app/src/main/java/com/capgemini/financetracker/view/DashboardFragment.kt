@@ -1,27 +1,26 @@
 package com.capgemini.financetracker.view
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentDashboardBinding
+import com.capgemini.financetracker.model.MenuDisplay
 
 
 class DashboardFragment : Fragment() {
 
     lateinit var binding: FragmentDashboardBinding
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = FragmentDashboardBinding.inflate(layoutInflater)
-//
-//
-//        arguments?.let {
-//
-//        }
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = FragmentDashboardBinding.inflate(layoutInflater)
+
+        setHasOptionsMenu(true)
+        arguments?.let {
+
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +36,11 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        MenuDisplay().mDisplay(menu, inflater)
     }
 
     companion object {

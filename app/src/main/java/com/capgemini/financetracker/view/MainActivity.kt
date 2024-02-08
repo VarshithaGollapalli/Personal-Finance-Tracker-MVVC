@@ -10,10 +10,14 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.ActivityMainBinding
+import com.capgemini.financetracker.databinding.FragmentTransactionHistoryBinding
 import com.capgemini.financetracker.model.LogoutDialog
+import com.capgemini.financetracker.model.TransactionData
+import com.capgemini.financetracker.view.placeholder.PlaceholderContent
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    val transcation= mutableListOf<PlaceholderContent.PlaceholderItem>()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +35,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+//        val b= FragmentTransactionHistoryBinding.inflate(layoutInflater)
+//        val data = listOf(TransactionData("123","2342","342",411))
+//        val adapter = MyItemRecyclerViewAdapter(data)
+//        b.rView.adapter = adapter
     }
 
     fun floatingBtnClick(){
@@ -39,10 +48,25 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_item, menu)
+        menuInflater.inflate(R.menu.menu_transaction,menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.sort_income->{
+                transcation.filter {
+                    it.type == "Income"
+                }
+
+            }
+            R.id.sort_expense-> {
+                transcation.filter {
+                    it.type == "Income"
+                }
+            }
+        }
 //        when(item.itemId){
 ////            R.id.menu_transaction_history -> {
 ////                //inflate
@@ -70,4 +94,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
 }

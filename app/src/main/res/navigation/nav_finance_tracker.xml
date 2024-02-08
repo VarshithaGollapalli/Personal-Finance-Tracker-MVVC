@@ -21,4 +21,9 @@
         android:name="com.capgemini.financetracker.view.AnalysisFragment"
         android:label="@string/title_analysis"
         tools:layout="@layout/fragment_analysis" />
+    <fragment
+        android:id="@+id/menu_transaction_history"
+        android:name="com.capgemini.financetracker.view.TransactionHistoryFragment"
+        android:label="Transaction History"
+        tools:layout="@layout/fragment_transaction_history_list" />
 </navigation>
