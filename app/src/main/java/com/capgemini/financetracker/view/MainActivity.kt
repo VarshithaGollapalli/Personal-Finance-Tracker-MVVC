@@ -4,25 +4,33 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.capgemini.financetracker.R
+import com.capgemini.financetracker.databinding.ActivityMainBinding
 import com.capgemini.financetracker.model.LogoutDialog
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var totalAmountTextView: TextView
-    lateinit var incomeTextView: TextView
-    lateinit var expenseTextView: TextView
-    lateinit var addDetailsFAButton: FloatingActionButton
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        totalAmountTextView = findViewById(R.id.totalamtT)
-        incomeTextView = findViewById(R.id.incomeT)
-        expenseTextView = findViewById(R.id.expenseT)
-        addDetailsFAButton = findViewById(R.id.addFB)
+        val navView: BottomNavigationView = binding.navView
+
+        val navController = findNavController(R.id.nav_host_fragment)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.menu_dashboard, R.id.menu_record, R.id.menu_transaction_history, R.id.menu_analysis
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 
     fun floatingBtnClick(){
@@ -35,14 +43,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.transaction_history -> {
-                //inflate
-            }
-            R.id.log_out -> {
-                onBackPressed()
-            }
-        }
+//        when(item.itemId){
+////            R.id.menu_transaction_history -> {
+////                //inflate
+////            }
+//            R.id.log_out -> {
+//                onBackPressed()
+//            }
+//        }
         return super.onOptionsItemSelected(item)
     }
 

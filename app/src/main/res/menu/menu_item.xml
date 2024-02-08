@@ -3,9 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/transaction_history"
-        android:title="Transaction History" />
+        android:id="@+id/menu_dashboard"
+        android:icon="@drawable/dashboard"
+        android:title="@string/title_dashboard" />
     <item
-        android:id="@+id/log_out"
-        android:title="Log out" />
+        android:id="@+id/menu_record"
+        android:icon="@drawable/records"
+        android:title="@string/title_records" />
+    <item
+        android:id="@+id/menu_transaction_history"
+        android:icon="@drawable/trans"
+        android:title="@string/title_Transaction_History" />
+    <item
+        android:id="@+id/menu_analysis"
+        android:icon="@drawable/ana"
+        android:title="@string/title_analysis" />
+    <!--    <item-->
+<!--        android:id="@+id/log_out"-->
+<!--        android:title="Log out"-->
+<!--        app:showAsAction="always" />-->
 </menu>
