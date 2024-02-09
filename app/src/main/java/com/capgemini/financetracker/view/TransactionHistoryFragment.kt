@@ -2,6 +2,7 @@ package com.capgemini.financetracker.view
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,14 +17,14 @@ import com.capgemini.financetracker.view.placeholder.PlaceholderContent
  */
 class TransactionHistoryFragment : Fragment() {
 
-   // val item: MutableList<TransactionData> = ArrayList()
+   val transcation= mutableListOf<PlaceholderContent.PlaceholderItem>()
+
 
     private var columnCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setHasOptionsMenu(true)
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
@@ -49,12 +50,33 @@ class TransactionHistoryFragment : Fragment() {
         return view
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        menu.findItem(R.id.menu_analysis)?.isVisible= false
-        menu.findItem(R.id.menu_dashboard)?.isVisible= false
-        menu.findItem(R.id.menu_record)?.isVisible= false
-        menu.findItem(R.id.menu_transaction_history)?.isVisible= false
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val mHost = requireActivity()
+        mHost.addMenuProvider(object: MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_transaction, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when(menuItem.itemId){
+                    R.id.sort_income->{
+                        transcation.filter {
+                            it.type == "Income"
+                        }
+
+                    }
+                    R.id.sort_expense-> {
+                        transcation.filter {
+                            it.type == "Income"
+                        }
+                    }
+                }
+                return true
+            }
+
+        })
     }
 
     companion object {

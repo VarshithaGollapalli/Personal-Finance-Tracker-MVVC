@@ -3,9 +3,7 @@ package com.capgemini.financetracker.view
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentDashboardBinding
-import com.capgemini.financetracker.model.MenuDisplay
 
 
 class DashboardFragment : Fragment() {
@@ -16,7 +14,6 @@ class DashboardFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = FragmentDashboardBinding.inflate(layoutInflater)
 
-        setHasOptionsMenu(true)
         arguments?.let {
 
         }
@@ -36,11 +33,6 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        MenuDisplay().mDisplay(menu, inflater)
     }
 
     companion object {

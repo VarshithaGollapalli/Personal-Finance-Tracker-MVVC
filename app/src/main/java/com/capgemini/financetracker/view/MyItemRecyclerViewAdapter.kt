@@ -48,9 +48,6 @@ class MyItemRecyclerViewAdapter(
         val amount: TextView = binding.amtT
 //        val dateandtime: TextView = binding.dateV
 
-//        override fun toString(): String {
-//            return super.toString() + " '" + contentView.text + "'"
-//        }
     }
 
 }

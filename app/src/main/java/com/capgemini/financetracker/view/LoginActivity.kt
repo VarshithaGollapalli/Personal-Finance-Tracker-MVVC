@@ -76,6 +76,8 @@ class LoginActivity : AppCompatActivity() {
                             Log.d("LoginActivity", "second")
                             val intent = Intent(this@LoginActivity,MainActivity::class.java)
                             startActivity(intent)
+                            emailidEditText.text.clear()
+                            passwordEditText.text.clear()
 
                         }
 
@@ -101,12 +103,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"pls enter the fields",
                     Toast.LENGTH_LONG).show()
             }
-
-
         }
-
-
-
     }
 
     fun regClick(view: View) {

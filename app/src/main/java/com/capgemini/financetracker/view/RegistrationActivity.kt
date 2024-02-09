@@ -100,12 +100,13 @@ class RegistrationActivity : AppCompatActivity() {
 
             }
             else{
-                Snackbar.make(it,"pls enter the fields",5000).show()
+                Snackbar.make(it,"Please enter all the fields",5000).show()
             }
 
 
             val intent=Intent(this,LoginActivity::class.java)
             startActivity(intent)
+//            intent.putExtra("name",0)
             //Toast.makeText(this, "Registration successful", Toast.LENGTH_LONG).show()
 
         }
