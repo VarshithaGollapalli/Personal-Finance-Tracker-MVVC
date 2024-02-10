@@ -2,6 +2,7 @@ package com.capgemini.financetracker.view
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import com.capgemini.financetracker.R
 
@@ -16,16 +17,22 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class AnalysisFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+//        val mHost = requireActivity()
+//        mHost.addMenuProvider(object : MenuProvider {
+//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+//                if(menu.findItem(R.id.sort_expense)!= null || menu.findItem(R.id.sort_income)!= null) {
+//                    menu.findItem(R.id.sort_income)?.isVisible = false
+//                    menu.findItem(R.id.sort_expense)?.isVisible = false
+//                }
+//            }
+//
+//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+//                return false
+//            }
+//
+//        })
     }
 
     override fun onCreateView(

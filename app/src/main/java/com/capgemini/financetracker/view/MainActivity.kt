@@ -41,6 +41,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu_transaction, menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return super.onOptionsItemSelected(item)
+//    }
+
+
     var backCounter = 0
     override fun onBackPressed() {
         backCounter++
@@ -54,6 +63,5 @@ class MainActivity : AppCompatActivity() {
             dlg.show(supportFragmentManager, null)
 
         }
-
     }
 }

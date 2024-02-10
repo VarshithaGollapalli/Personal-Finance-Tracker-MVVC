@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 class FinancialDataRepository(val ctx:Context) {
 
     val finDao = FinancialDataDatabase.getInstance(ctx).finaceDao()
+//    val allExpenses: LiveData<List<FinancialDataEntry>> = finDao.getAllFinancialData()
 
     suspend fun addData(
         id:Long,
@@ -66,6 +67,10 @@ class FinancialDataRepository(val ctx:Context) {
 
     suspend fun getperson(mail: String,pass:Int):Credentials?{
         return finDao.getUser(mail,pass)
+    }
+
+    fun getFinancialData(): LiveData<List<FinancialDataEntry>> {
+        return finDao.getAllFinancialData()
     }
 
 }

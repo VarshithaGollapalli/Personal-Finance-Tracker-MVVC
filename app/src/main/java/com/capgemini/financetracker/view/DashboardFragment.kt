@@ -2,7 +2,9 @@ package com.capgemini.financetracker.view
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentDashboardBinding
 
 
@@ -14,9 +16,21 @@ class DashboardFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = FragmentDashboardBinding.inflate(layoutInflater)
 
-        arguments?.let {
-
-        }
+//        val mHost = requireActivity()
+//        mHost.addMenuProvider(object : MenuProvider {
+//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+//                if(menu.findItem(R.id.sort_expense)!= null || menu.findItem(R.id.sort_income)!= null) {
+//
+//                    menu.findItem(R.id.sort_income)?.isVisible = false
+//                    menu.findItem(R.id.sort_expense)?.isVisible = false
+//                }
+//            }
+//
+//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+//                return false
+//            }
+//
+//        })
     }
 
     override fun onCreateView(
@@ -35,7 +49,8 @@ class DashboardFragment : Fragment() {
 
     }
 
-    companion object {
 
-    }
+//    companion object {
+//
+//    }
 }

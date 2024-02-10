@@ -2,6 +2,7 @@ package com.capgemini.financetracker.view
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import com.capgemini.financetracker.R
 
@@ -22,10 +23,21 @@ class RecordFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+//        val mHost = requireActivity()
+//        mHost.addMenuProvider(object : MenuProvider {
+//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+//                if(menu.findItem(R.id.sort_expense)!= null || menu.findItem(R.id.sort_income)!= null) {
+//
+//                    menu.findItem(R.id.sort_income)?.isVisible = false
+//                    menu.findItem(R.id.sort_expense)?.isVisible = false
+//                }
+//            }
+//
+//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+//                return false
+//            }
+//
+//        })
     }
 
     override fun onCreateView(

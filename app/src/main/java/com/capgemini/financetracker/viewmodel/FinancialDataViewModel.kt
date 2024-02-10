@@ -17,8 +17,7 @@ class FinancialDataViewModel(application: Application): AndroidViewModel(applica
     private val repo = FinancialDataRepository(application)
 
     var isDataAdded=MutableLiveData<Boolean>(false)
-
-
+    var financialDataList = repo.getFinancialData()
 
 
     fun addData(id:Long,
