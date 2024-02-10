@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ExpenseIncomeEntryyy">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0FFFFFFF">
+
+        <EditText
+            android:id="@+id/amountE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Amount"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/dateD"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/dateD"
+            app:layout_constraintTop_toBottomOf="@+id/dateD" />
+
+        <EditText
+            android:id="@+id/catE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Category"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/amountE"
+            app:layout_constraintStart_toStartOf="@+id/amountE"
+            app:layout_constraintTop_toBottomOf="@+id/amountE" />
+
+        <EditText
+            android:id="@+id/descE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Description"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/catE"
+            app:layout_constraintStart_toStartOf="@+id/catE"
+            app:layout_constraintTop_toBottomOf="@+id/catE" />
+
+        <Button
+            android:id="@+id/incomeB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="75dp"
+            android:layout_marginTop="50dp"
+            android:text="Income"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descE" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Income and Expense"
+            android:textColor="#0A0A0B"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/dateD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:ems="10"
+            android:hint="Date"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/expenseB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="59dp"
+            android:layout_marginEnd="75dp"
+            android:text="Expense"
+            app:layout_constraintBottom_toBottomOf="@+id/incomeB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/incomeB"
+            app:layout_constraintTop_toTopOf="@+id/incomeB" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
