@@ -1,6 +1,5 @@
 package com.capgemini.financetracker.view
 
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,8 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.capgemini.financetracker.R
-import com.capgemini.financetracker.model.Person
-import com.capgemini.financetracker.model.PersonDatabase
+import com.capgemini.financetracker.model.ExpenseIncomeRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,47 +23,62 @@ class LoginActivity : AppCompatActivity() {
     lateinit var emailidEditText: EditText
     lateinit var passwordEditText: EditText
 
+    lateinit var repo:ExpenseIncomeRepository
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loginButton=findViewById(R.id.button2)
+        loginButton = findViewById(R.id.button2)
 
-        emailidEditText=findViewById(R.id.editTextTextEmailAddress2)
-        passwordEditText=findViewById(R.id.editTextNumberPassword)
+        emailidEditText = findViewById(R.id.editTextTextEmailAddress2)
+        passwordEditText = findViewById(R.id.editTextNumberPassword)
+
+        repo=ExpenseIncomeRepository(this)
+
+
+        loginOnClick()
+
+
+    }
+    private fun loginOnClick() {
 
         fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS
             .matcher(this).matches()
 
 
-        loginButton.setOnClickListener{
+
+
+        loginButton.setOnClickListener {
             //lambda expression is executed once the click event done
-            Log.d("Main Activity","Login clicked")
+            Log.d("Main Activity", "Login clicked")
 
-            val emailid=emailidEditText.text.toString()
-            val password=passwordEditText.text.toString()
+            val emailid = emailidEditText.text.toString()
+            val password = passwordEditText.text.toString()
             //val pw=password.toInt()
-            val validatepassword=password.length>=8&&password.length<=16
+            val validatepassword = password.length >= 8 && password.length <= 16
 
-            if(!validatepassword){
-                Toast.makeText(this,"The password should be minimum of 8 digits and maximum of 16 digits",
-                    Toast.LENGTH_LONG).show()
+            if (!validatepassword) {
+                Toast.makeText(
+                    this, "The password should be minimum of 8 digits and maximum of 16 digits",
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
-            if(!emailid.isValidEmail()){
+            if (!emailid.isValidEmail()) {
                 Toast.makeText(this, "Please enter a valid mail id", Toast.LENGTH_LONG).show()
             }
 
 
-            if(emailid.isValidEmail()&&password.isNotEmpty()) {
+            if (emailid.isValidEmail() && password.isNotEmpty()) {
                 CoroutineScope(Dispatchers.Default).launch {
-                    val psonDao=PersonDatabase.getInstance(this@LoginActivity).getDao()
-                    Log.d("LoginActivity","first")
+                    //val psonDao = PersonDatabase.getInstance(this@LoginActivity).getDao()
+                    Log.d("LoginActivity", "first")
 
                     try {
-                        psonDao.getpersonemailwithexception("$emailid",password.toInt())
-                        withContext(Dispatchers.Main){
+                        repo.getPersonEmailWithException("$emailid", password.toInt())
+                        CoroutineScope(Dispatchers.Main).launch{
 
 
                             Toast.makeText(
@@ -74,15 +87,12 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.LENGTH_LONG
                             ).show()
                             Log.d("LoginActivity", "second")
-                            val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                            val intent=Intent(this@LoginActivity,MainActivity::class.java)
                             startActivity(intent)
-                            emailidEditText.text.clear()
-                            passwordEditText.text.clear()
-
                         }
 
-                    } catch (err:Exception){
-                        withContext(Dispatchers.Main) {
+                    } catch (err: Exception) {
+                        CoroutineScope(Dispatchers.Main).launch {
                             Toast.makeText(
                                 this@LoginActivity,
                                 "Invalid emailid or password",
@@ -95,14 +105,18 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
 
-                Toast.makeText(this, "Login is in progress $emailid",
-                    Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this, "Login is in progress $emailid",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    this, "pls enter the fields",
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
-            else{
-                Toast.makeText(this,"pls enter the fields",
-                    Toast.LENGTH_LONG).show()
-            }
+
         }
     }
 

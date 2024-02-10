@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.capgemini.financetracker.R
-import com.capgemini.financetracker.model.Person
-import com.capgemini.financetracker.model.PersonDatabase
+import com.capgemini.financetracker.model.Credentials
+import com.capgemini.financetracker.model.TransactionDatabase
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -84,10 +83,10 @@ class RegistrationActivity : AppCompatActivity() {
 
 
                 CoroutineScope(Dispatchers.Default).launch {
-                    val psonDao=PersonDatabase.getInstance(this@RegistrationActivity).getDao()
+                    val psonDao=TransactionDatabase.getInstance(this@RegistrationActivity).transactionDao()
 
                     try {
-                        psonDao.addperson(Person(personname,mail,passwords.toInt(),confirmpassword.toInt()))
+                        psonDao.addUser(Credentials(personname,mail,passwords.toInt(),confirmpassword.toInt()))
                         withContext(Dispatchers.Main){
                             Toast.makeText(this@RegistrationActivity, "Registration s successful", Toast.LENGTH_LONG).show()
                         }
