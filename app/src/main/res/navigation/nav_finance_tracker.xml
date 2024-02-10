@@ -23,6 +23,7 @@
         tools:layout="@layout/fragment_transaction_history_list" />
     <fragment
         android:id="@+id/menu_record"
-        android:name="com.capgemini.financetracker.view.ExpenseIncomeEntryyy"
-        android:label="ExpenseIncomeEntryyy" />
+        android:name="com.capgemini.financetracker.view.FinancialDataEntryFragment"
+        android:label="fragment_financial_data_entry"
+        tools:layout="@layout/fragment_financial_data_entry" />
 </navigation>

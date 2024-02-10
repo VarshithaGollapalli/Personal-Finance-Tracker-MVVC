@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capgemini.financetracker.R
-import com.capgemini.financetracker.databinding.FragmentTransactionHistoryBinding
-import com.capgemini.financetracker.model.TransactionData
 import com.capgemini.financetracker.view.placeholder.PlaceholderContent
 
 /**

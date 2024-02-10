@@ -2,12 +2,9 @@ package com.capgemini.financetracker.view
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentTransactionHistoryBinding
-import com.capgemini.financetracker.model.TransactionData
 
 import com.capgemini.financetracker.view.placeholder.PlaceholderContent.PlaceholderItem
 

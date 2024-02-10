@@ -2,18 +2,13 @@ package com.capgemini.financetracker.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.ActivityMainBinding
-import com.capgemini.financetracker.databinding.FragmentTransactionHistoryBinding
-import com.capgemini.financetracker.model.LogoutDialog
-import com.capgemini.financetracker.model.TransactionData
-import com.capgemini.financetracker.view.placeholder.PlaceholderContent
+import com.capgemini.personalfinanacetracker.model.LogoutDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
