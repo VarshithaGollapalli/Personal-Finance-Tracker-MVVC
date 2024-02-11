@@ -17,14 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        val frag=ExpenseIncomeEntryyy()
-//        val transaction=supportFragmentManager.beginTransaction()
-//        transaction.add(R.id.nav_host_fragment,frag)
-//
-//        transaction.commit()
-
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

@@ -24,6 +24,6 @@
     <fragment
         android:id="@+id/menu_record"
         android:name="com.capgemini.financetracker.view.FinancialDataEntryFragment"
-        android:label="fragment_financial_data_entry"
+        android:label="Income and Expense Entry"
         tools:layout="@layout/fragment_financial_data_entry" />
 </navigation>
