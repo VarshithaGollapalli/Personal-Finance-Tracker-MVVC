@@ -2,6 +2,7 @@ package com.capgemini.financetracker.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.capgemini.personalfinanacetracker.model.FinancialDataRepository
@@ -18,7 +19,9 @@ class FinancialDataViewModel(application: Application): AndroidViewModel(applica
 
     var isDataAdded=MutableLiveData<Boolean>(false)
     var financialDataList = repo.getFinancialData()
-
+    val currentBalance: LiveData<Double> = repo.currentBalance()
+    val totalIncome: LiveData<Double> = repo.totalIncome()
+    val totalExpense: LiveData<Double> = repo.totalExpense()
 
     fun addData(id:Long,
                 type: String,

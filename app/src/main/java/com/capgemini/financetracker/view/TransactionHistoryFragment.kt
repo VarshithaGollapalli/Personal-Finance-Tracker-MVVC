@@ -23,11 +23,11 @@ import com.capgemini.personalfinanacetracker.model.FinancialDataEntry
  */
 class TransactionHistoryFragment : Fragment() {
 
-   val transcation= mutableListOf<FinancialDataEntry>()
+   //val transcation= mutableListOf<FinancialDataEntry>()
 
 
     private var columnCount = 1
-    private var isMenuProvidedAdded=false
+//    private var isMenuProvidedAdded=false
 //    lateinit var customMenu : Menu
     lateinit var recyclerView: RecyclerView
     lateinit var financeVM: FinancialDataViewModel
@@ -108,14 +108,14 @@ class TransactionHistoryFragment : Fragment() {
         sortByIncomeButton = view.findViewById(R.id.sIncB)
         sortByIncomeButton.setOnClickListener {
             Log.d("sort","entered")
-            val sortedData = transcation.filter { it.type == "income" || it.type =="Income"}
-            recyclerView.adapter = TransactionHistoryAdapter(sortedData)
+            val sortedData = financeVM.financialDataList.value?.filter { it.type == "income" || it.type =="Income"}
+            recyclerView.adapter = TransactionHistoryAdapter(sortedData.orEmpty())
         }
         sortByExpenseButton = view.findViewById(R.id.sExpB)
         sortByExpenseButton.setOnClickListener {
             Log.d("sort","entered")
-            val sortedData = transcation.filter { it.type == "expense" || it.type =="Expense"}
-            recyclerView.adapter = TransactionHistoryAdapter(sortedData)
+            val sortedData = financeVM.financialDataList.value?.filter { it.type == "expense" || it.type =="Expense"}
+            recyclerView.adapter = TransactionHistoryAdapter(sortedData.orEmpty())
         }
 
         return view

@@ -8,22 +8,6 @@
     tools:context=".view.DashboardFragment">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingTop="35dp">
-
-        <TextView
-            android:id="@+id/currentDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Date"
-            android:textColor="#0B0A0A"
-            android:textSize="16sp" />
-    </LinearLayout>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
@@ -68,10 +52,8 @@
                 android:id="@+id/incomeT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginTop="40dp"
                 android:text="Total Income"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/totalamtT"
                 app:layout_constraintTop_toBottomOf="@+id/totalamtT" />
 
@@ -79,13 +61,12 @@
                 android:id="@+id/expenseT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="133dp"
-                android:layout_marginEnd="36dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
                 android:text="Total Expense"
-                app:layout_constraintBottom_toBottomOf="@+id/incomeT"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/incomeT"
-                app:layout_constraintTop_toTopOf="@+id/incomeT" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/incomeT"
+                app:layout_constraintTop_toBottomOf="@+id/incomeT" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -109,12 +90,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
         android:text="Hello, "
         android:textColor="#0B0B0B"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="76dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

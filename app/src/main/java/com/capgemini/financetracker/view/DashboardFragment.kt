@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentDashboardBinding
+import com.capgemini.financetracker.viewmodel.FinancialDataViewModel
 
 
 class DashboardFragment : Fragment() {
 
     lateinit var binding: FragmentDashboardBinding
+    private lateinit var financeVM: FinancialDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,11 +50,20 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        financeVM = ViewModelProvider(this).get(FinancialDataViewModel::class.java)
+
+        financeVM.currentBalance.observe(viewLifecycleOwner, Observer { balance ->
+            binding.totalamtT.text = "Current Balance $balance"
+        })
+
+        financeVM.totalIncome.observe(viewLifecycleOwner, Observer { income ->
+            binding.incomeT.text = "Total Income: $income"
+        })
+
+        financeVM.totalExpense.observe(viewLifecycleOwner, Observer { expense ->
+            binding.expenseT.text = "Total Expense: $expense"
+        })
 
     }
 
-
-//    companion object {
-//
-//    }
 }

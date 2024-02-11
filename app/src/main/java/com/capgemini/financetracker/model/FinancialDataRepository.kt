@@ -2,6 +2,7 @@ package com.capgemini.personalfinanacetracker.model
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -71,6 +72,45 @@ class FinancialDataRepository(val ctx:Context) {
 
     fun getFinancialData(): LiveData<List<FinancialDataEntry>> {
         return finDao.getAllFinancialData()
+    }
+
+    fun currentBalance(): LiveData<Double> = finDao.getAllFinancialData().map { calculateCurrentBalance(it) }
+
+    private fun calculateCurrentBalance(financeList: List<FinancialDataEntry>): Double {
+        var balance = 0.0
+        financeList.forEach{entry ->
+            when(entry.type.lowercase()){
+                "income" -> balance += entry.amount
+                "expense" -> balance -= entry.amount
+            }
+
+        }
+        return balance
+    }
+
+    fun totalIncome(): LiveData<Double> = finDao.getAllFinancialData().map { calculateTotalIncome(it) }
+
+    private fun calculateTotalIncome(financeList: List<FinancialDataEntry>): Double {
+        var income=0.0
+        var expense = 0.0
+        financeList.forEach{entry ->
+            if (entry.type.lowercase().equals("income")){
+                income += entry.amount
+            }
+        }
+        return income
+    }
+
+    fun totalExpense(): LiveData<Double> = finDao.getAllFinancialData().map { calculateTotalExpense(it) }
+
+    private fun calculateTotalExpense(financeList: List<FinancialDataEntry>): Double {
+        var expense = 0.0
+        financeList.forEach{entry ->
+            if (entry.type.lowercase().equals("expense")){
+                expense += entry.amount
+            }
+        }
+        return expense
     }
 
 }
