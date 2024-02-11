@@ -2,64 +2,61 @@ package com.capgemini.financetracker.view
 
 import android.os.Bundle
 import android.view.*
-import androidx.core.view.MenuProvider
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.capgemini.financetracker.R
+import com.capgemini.financetracker.databinding.FragmentDashboardBinding
+import com.capgemini.financetracker.viewmodel.FinancialDataViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AnalysisFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AnalysisFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        val mHost = requireActivity()
-//        mHost.addMenuProvider(object : MenuProvider {
-//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-//                if(menu.findItem(R.id.sort_expense)!= null || menu.findItem(R.id.sort_income)!= null) {
-//                    menu.findItem(R.id.sort_income)?.isVisible = false
-//                    menu.findItem(R.id.sort_expense)?.isVisible = false
-//                }
-//            }
-//
-//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-//                return false
-//            }
-//
-//        })
-    }
-
+    private lateinit var financialDataViewModel:FinancialDataViewModel
+    private lateinit var txtExpense: TextView
+    private lateinit var txtIncome: TextView
+    private lateinit var expenseProgressBar: ProgressBar
+    private lateinit var incomeProgressBar: ProgressBar
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_analysis, container, false)
+        val view = inflater.inflate(R.layout.fragment_analysis, container, false)
+        txtExpense = view.findViewById(R.id.textExpense)
+        txtIncome = view.findViewById(R.id.textIncome)
+        expenseProgressBar = view.findViewById(R.id.expenseBar)
+        incomeProgressBar = view.findViewById(R.id.incomeBar)
+        return view
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var totalIncome=Double.MIN_VALUE
+        var totalExpense=Double.MIN_VALUE
+        financialDataViewModel = ViewModelProvider(this).get(FinancialDataViewModel::class.java)
+        financialDataViewModel.totalIncome.observe(viewLifecycleOwner, Observer { income ->
+            totalIncome = income
+            updateProgressBars(totalExpense,totalIncome)
+        })
+        financialDataViewModel.totalExpense.observe(viewLifecycleOwner, Observer { expense ->
+            totalExpense = expense
+            updateProgressBars(totalExpense,totalIncome)
+        })
+// updateProgressBars(totalExpense,totalIncome)
+//
+// financialDataViewModel.totalExpense.observe(viewLifecycleOwner, Observer { expense ->
+// binding.expenseT.text = "Total Expense: $expense"
+// })
+// financialDataViewModel.ExpenseAndIncome.observe(viewLifecycleOwner) { transactions ->
+// val (totalExpense, totalIncome) = financialDataViewModel.ExpenseAndIncome(transactions)
+// }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AnalysisFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AnalysisFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    }
+    private fun updateProgressBars(totalExpense: Double, totalIncome: Double) {
+        val maxProgress = (totalExpense + totalIncome).toInt()
+        expenseProgressBar.max = maxProgress
+        incomeProgressBar.max = maxProgress
+        expenseProgressBar.progress = totalExpense.toInt()
+        incomeProgressBar.progress = totalIncome.toInt()
     }
 }
