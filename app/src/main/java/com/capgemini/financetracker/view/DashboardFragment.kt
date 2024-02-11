@@ -53,15 +53,15 @@ class DashboardFragment : Fragment() {
         financeVM = ViewModelProvider(this).get(FinancialDataViewModel::class.java)
 
         financeVM.currentBalance.observe(viewLifecycleOwner, Observer { balance ->
-            binding.totalamtT.text = "Current Balance $balance"
+            binding.totalamtT.text = "₹ $balance"
         })
 
         financeVM.totalIncome.observe(viewLifecycleOwner, Observer { income ->
-            binding.incomeT.text = "Total Income: $income"
+            binding.incomeT.text = "Total Income ₹ $income"
         })
 
         financeVM.totalExpense.observe(viewLifecycleOwner, Observer { expense ->
-            binding.expenseT.text = "Total Expense: $expense"
+            binding.expenseT.text = "Total Expense ₹ $expense"
         })
 
     }
