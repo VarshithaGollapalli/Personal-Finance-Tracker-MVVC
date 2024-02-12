@@ -23,18 +23,18 @@ import com.capgemini.personalfinanacetracker.model.FinancialDataEntry
  */
 class TransactionHistoryFragment : Fragment() {
 
-   //val transcation= mutableListOf<FinancialDataEntry>()
+    //val transcation= mutableListOf<FinancialDataEntry>()
 
 
     private var columnCount = 1
-//    private var isMenuProvidedAdded=false
+    //    private var isMenuProvidedAdded=false
 //    lateinit var customMenu : Menu
     lateinit var recyclerView: RecyclerView
     lateinit var financeVM: FinancialDataViewModel
     lateinit var sortByIncomeButton: Button
     lateinit var sortByExpenseButton: Button
     lateinit var imageView: ImageView
-//    private lateinit var financeDataCass:FinancialDataEntry
+    //private lateinit var financeDataCass:FinancialDataEntry
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

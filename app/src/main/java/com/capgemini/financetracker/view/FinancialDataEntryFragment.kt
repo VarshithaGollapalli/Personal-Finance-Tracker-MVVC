@@ -27,7 +27,7 @@ class FinancialDataEntryFragment: Fragment() {
     lateinit var descriptionEditText: EditText
     lateinit var typeEditText: EditText
     lateinit var incomeB: Button
-    lateinit var expenseB: Button
+
     lateinit var dateEditText: EditText
 
     var isAddedClicked = false
@@ -74,6 +74,7 @@ class FinancialDataEntryFragment: Fragment() {
                     Toast.makeText(requireContext(), "Entry Added", Toast.LENGTH_LONG)
                         .show()
                     //finish()
+
                 }
 
             }

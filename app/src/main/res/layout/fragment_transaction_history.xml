@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#EEC7F4"
+    app:cardBackgroundColor="#7B8DF1"
     app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true">
 
@@ -26,7 +26,8 @@
             app:circularflow_radiusInDP="5dp"
             app:layout_constraintEnd_toStartOf="@+id/typeT"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/person" />
 
         <TextView
             android:id="@+id/typeT"

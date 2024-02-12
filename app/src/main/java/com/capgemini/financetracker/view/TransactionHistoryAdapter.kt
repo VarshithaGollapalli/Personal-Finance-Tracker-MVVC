@@ -9,6 +9,7 @@ import com.capgemini.financetracker.databinding.FragmentTransactionHistoryBindin
 
 import com.capgemini.financetracker.view.placeholder.PlaceholderContent.PlaceholderItem
 import com.capgemini.personalfinanacetracker.model.FinancialDataEntry
+import com.capgemini.personalfinanacetracker.model.TransactionData
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
@@ -41,10 +42,6 @@ class TransactionHistoryAdapter(
 
 
     override fun getItemCount(): Int = values.size
-    fun updateData(sortedData: List<FinancialDataEntry>) {
-        values = sortedData
-        notifyDataSetChanged()
-    }
 
     inner class ViewHolder(binding: FragmentTransactionHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
         val typeTextView: TextView = binding.typeT
@@ -52,8 +49,7 @@ class TransactionHistoryAdapter(
         val description: TextView = binding.decT
         val amount: TextView = binding.amtT
         val date: TextView = binding.dateV
-
-        val imageView: ImageView =binding.imageView
+        //val imageView: ImageView =binding.imageView
 
     }
 

@@ -16,6 +16,7 @@ class FinancialDataRepository(val ctx:Context) {
         category: String,
         description: String,
         date: String
+
     ): Boolean {
 
         var isAdded = false

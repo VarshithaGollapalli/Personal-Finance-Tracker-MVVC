@@ -1,7 +1,9 @@
 package com.capgemini.personalfinanacetracker.model
 
 data class TransactionData(
-    val type: String,
+    val type:String,
+    val amount: Double,
     val category: String,
     val description: String,
-    val amount: Int)
+    val date: String,
+    val image:Int)

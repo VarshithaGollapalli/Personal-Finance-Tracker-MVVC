@@ -13,6 +13,7 @@ data class FinancialDataEntry(
     val category: String,
     val description: String,
     val date: String
+
     )
 
 @Entity
