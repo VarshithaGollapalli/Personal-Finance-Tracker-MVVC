@@ -1,7 +1,11 @@
 package com.capgemini.financetracker.view
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -33,27 +37,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.menu_transaction, menu)
-//        return super.onCreateOptionsMenu(menu)
-//    }
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return super.onOptionsItemSelected(item)
-//    }
-
-
-    var backCounter = 0
-    override fun onBackPressed() {
-        backCounter++
-        if(backCounter == 2){
-            super.onBackPressed()
-            backCounter=0
-        }
-        else{
-            val dlg = LogoutDialog()
-            dlg.isCancelable = false
-            dlg.show(supportFragmentManager, null)
-
-        }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_logout, menu)
+        return super.onCreateOptionsMenu(menu)
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_logout -> {
+                val sharedPreference = getSharedPreferences("setting", Context.MODE_PRIVATE)
+                sharedPreference.edit().remove("emailId").apply()
+                Log.d("logout", "logout")
+                LogoutDialog().show(supportFragmentManager,"logout_dialog")
+                //return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }
