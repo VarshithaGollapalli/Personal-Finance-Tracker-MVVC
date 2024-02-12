@@ -1,7 +1,6 @@
 package com.capgemini.financetracker.view
 
 import android.app.DatePickerDialog
-import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,27 +10,26 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.viewmodel.FinancialDataViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.time.LocalDate
 import java.util.*
 
 class FinancialDataEntryFragment: Fragment() {
     lateinit var amountEditText: EditText
     lateinit var categoryEditText: EditText
     lateinit var descriptionEditText: EditText
-    lateinit var typeEditText: EditText
-    lateinit var incomeB: Button
+    lateinit var submitButton: Button
+    lateinit var radioGroupType: RadioGroup
+    lateinit var radioButtonIncome: RadioButton
+    lateinit var radioButtonExpense: RadioButton
 
     lateinit var dateEditText: EditText
 
     var isAddedClicked = false
-    //private lateinit var repository: ExpenseIncomeRepository
     lateinit var financeVM: FinancialDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,12 +52,12 @@ class FinancialDataEntryFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         amountEditText = view.findViewById(R.id.amountE)
         categoryEditText = view.findViewById(R.id.catE)
-        typeEditText=view.findViewById(R.id.typeE)
         descriptionEditText = view.findViewById(R.id.descE)
         dateEditText= view.findViewById(R.id.dateD)
-        incomeB=view.findViewById(R.id.incomeB)
-        //expenseB=view.findViewById(R.id.expenseB)
-        Log.d("ExpenseIncomeentryyyy","first")
+        submitButton=view.findViewById(R.id.submitB)
+        radioButtonIncome = view.findViewById(R.id.incomeRB)
+        radioButtonExpense = view.findViewById(R.id.expenseRB)
+        Log.d("Financial data entry","first")
 
         dateEditText.setOnClickListener{
             datePick()
@@ -73,7 +71,6 @@ class FinancialDataEntryFragment: Fragment() {
                 if (it) {
                     Toast.makeText(requireContext(), "Entry Added", Toast.LENGTH_LONG)
                         .show()
-                    //finish()
 
                 }
 
@@ -81,22 +78,48 @@ class FinancialDataEntryFragment: Fragment() {
         }
 
 
-        incomeB.setOnClickListener {
+        submitButton.setOnClickListener {
             isAddedClicked = true
-            Log.d("ExpenseIncomeentryyyy", "second")
-            val type=typeEditText.text.toString()
-            val amount = amountEditText.text.toString().toDouble()
+            Log.d("Finance data entry", "second")
+            val type = ""
+            val amount = amountEditText.text.toString().toDoubleOrNull()
             val category = categoryEditText.text.toString()
             val description = descriptionEditText.text.toString()
-            val date=dateEditText.text.toString()
+            val date = dateEditText.text.toString()
+            if (radioGroupType.checkedRadioButtonId==R.id.incomeRB){
 
+                Log.d("FinancialDataEntryFragment","second")
 
-            val result = financeVM.addData(id=0,type,amount,category,description,date)
+                if (amount != null) {
+                    financeVM.addData(id=0,type = "income",amount,category,description,date)
+                }
 
+            }
+            else{
 
+                Log.d("FinancialDataEntryFragment","third")
+                type=="expense"
+                if (amount != null) {
+                    financeVM.addData(id=0,type = "expense",amount,category,description,date)
+                }
 
+            }
+            if(type.isNotEmpty() && amountEditText.text.isNotEmpty() && category.isNotEmpty()
+                && description.isNotEmpty() && date.isNotEmpty()){
+                if (amount != null) {
+                    financeVM.addData(id = 0, type, amount, category, description, date)
+                }
+            }
+                else{
+                    Toast.makeText(requireContext(),"Enter all fields",Toast.LENGTH_LONG).show()
+                }
 
+            dateEditText.text.clear()
+            amountEditText.text.clear()
+            categoryEditText.text.clear()
+            descriptionEditText.text.clear()
         }
+
     }
 
 
@@ -110,19 +133,11 @@ class FinancialDataEntryFragment: Fragment() {
                 // setting date to our edit text.
                 val sdate = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
                 dateEditText.setText(sdate)
-//                    val sDate= Calendar.getInstance()
-//                    sDate.set(year,monthOfYear,dayOfMonth)
-//                    val dateFormat= SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-//                    val formattedDate=dateFormat.format(sDate.time)
-//                    date.setText(formattedDate)
             },
-            //passing year, month and day for the selected date in our date picker.
             year,
             month,
             day
         )
         datePickerDialog.show()
     }
-
-
 }

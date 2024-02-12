@@ -9,44 +9,43 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:listitem="@layout/fragment_transaction_history">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rView"
-        android:layout_width="339dp"
-        android:layout_height="596dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.647"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sIncB"
-        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/fragment_transaction_history" />
+
     <Button
         android:id="@+id/sIncB"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="80dp"
-        android:text="Sort by Income"
+        android:text="@string/history_SortbyIncome"
         android:textColor="#090909"
         app:layout_constraintEnd_toStartOf="@+id/sExpB"
-        app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/sExpB"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="Sort by Expense"
+        android:text="@string/history_SortByExpense"
         android:textColor="#0C0C0C"
         app:layout_constraintBottom_toBottomOf="@+id/sIncB"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sIncB"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/sIncB" />
 </androidx.constraintlayout.widget.ConstraintLayout>

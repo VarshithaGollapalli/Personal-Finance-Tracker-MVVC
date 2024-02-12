@@ -32,8 +32,8 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton = findViewById(R.id.button2)
 
-        emailidEditText = findViewById(R.id.editTextTextEmailAddress2)
-        passwordEditText = findViewById(R.id.editTextNumberPassword)
+        emailidEditText = findViewById(R.id.EmailAddressE)
+        passwordEditText = findViewById(R.id.PasswordE)
 
         repo=FinancialDataRepository(this)
 
@@ -56,7 +56,6 @@ class LoginActivity : AppCompatActivity() {
 
             val emailid = emailidEditText.text.toString()
             val password = passwordEditText.text.toString()
-            //val pw=password.toInt()
             val validatepassword = password.length >= 8 && password.length <= 16
 
             if (!validatepassword) {
@@ -67,25 +66,18 @@ class LoginActivity : AppCompatActivity() {
             }
 
             if (!emailid.isValidEmail()) {
-                Toast.makeText(this, "Please enter a valid mail id", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Please enter a valid EmailId", Toast.LENGTH_LONG).show()
             }
 
 
             if (emailid.isValidEmail() && password.isNotEmpty()) {
                 CoroutineScope(Dispatchers.Default).launch {
-                    //val psonDao = PersonDatabase.getInstance(this@LoginActivity).getDao()
                     Log.d("LoginActivity", "first")
 
                     try {
                         repo.getPersonEmailWithException("$emailid", password.toInt())
                         CoroutineScope(Dispatchers.Main).launch{
 
-
-                            Toast.makeText(
-                                this@LoginActivity,
-                                "Registered mail id",
-                                Toast.LENGTH_LONG
-                            ).show()
                             Log.d("LoginActivity", "second")
                             val intent=Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(intent)
@@ -95,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
                         CoroutineScope(Dispatchers.Main).launch {
                             Toast.makeText(
                                 this@LoginActivity,
-                                "Invalid emailid or password",
+                                "Invalid EmailId or Password",
                                 Toast.LENGTH_LONG
                             ).show()
                             Log.d("LoginActivity", "third")
@@ -104,17 +96,14 @@ class LoginActivity : AppCompatActivity() {
 
                     }
                 }
-
-                Toast.makeText(
-                    this, "Login is in progress $emailid",
-                    Toast.LENGTH_LONG
-                ).show()
             } else {
                 Toast.makeText(
                     this, "pls enter the fields",
                     Toast.LENGTH_LONG
                 ).show()
             }
+            emailidEditText.text.clear()
+            passwordEditText.text.clear()
 
 
         }

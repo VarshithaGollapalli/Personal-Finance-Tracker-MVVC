@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentTransactionHistoryBinding
 
 import com.capgemini.financetracker.view.placeholder.PlaceholderContent.PlaceholderItem
@@ -38,6 +39,11 @@ class TransactionHistoryAdapter(
         holder.description.text = item.description
         holder.amount.text = "Rs. ${item.amount.toString()}"
         holder.date.text = item.date.toString()
+        if(item.type == "income"){
+            holder.imageView.setImageResource(R.drawable.income)
+        }else{
+            holder.imageView.setImageResource(R.drawable.expense)
+        }
     }
 
 
@@ -49,7 +55,7 @@ class TransactionHistoryAdapter(
         val description: TextView = binding.decT
         val amount: TextView = binding.amtT
         val date: TextView = binding.dateV
-        //val imageView: ImageView =binding.imageView
+        val imageView: ImageView =binding.imageView
 
     }
 

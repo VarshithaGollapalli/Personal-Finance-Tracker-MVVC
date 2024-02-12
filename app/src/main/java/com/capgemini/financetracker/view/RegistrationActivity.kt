@@ -39,12 +39,6 @@ class RegistrationActivity : AppCompatActivity() {
         fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS
             .matcher(this).matches()
 
-
-
-
-
-
-
         registerButton.setOnClickListener {
 
             Log.d("Register Activity","Register clicked")
