@@ -35,6 +35,10 @@ class LoginActivity : AppCompatActivity() {
         emailidEditText = findViewById(R.id.EmailAddressE)
         passwordEditText = findViewById(R.id.PasswordE)
 
+        val pref=getSharedPreferences("setting", MODE_PRIVATE)
+        val emailId=pref.getString("emailId","")
+        emailidEditText.setText(emailId)
+
         repo=FinancialDataRepository(this)
 
 
@@ -71,6 +75,13 @@ class LoginActivity : AppCompatActivity() {
 
 
             if (emailid.isValidEmail() && password.isNotEmpty()) {
+
+                val pref=getSharedPreferences("setting", MODE_PRIVATE)
+                val editor=pref.edit()
+                editor.putString("emailId",emailid)
+                editor.commit()
+                Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show()
+
                 CoroutineScope(Dispatchers.Default).launch {
                     Log.d("LoginActivity", "first")
 

@@ -1,8 +1,9 @@
 package com.capgemini.financetracker.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
-import androidx.core.view.MenuProvider
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -44,11 +45,19 @@ class DashboardFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  FragmentDashboardBinding.inflate(inflater, container, false)
         val root = binding.root
+
+
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sharedPreferences=requireContext().getSharedPreferences("setting",Context.MODE_PRIVATE)
+        val userEmail=sharedPreferences.getString("emailId","")
+        val emailTextView:TextView=view.findViewById(R.id.emailIdE)
+        emailTextView.text=userEmail
+
 
         financeVM = ViewModelProvider(this).get(FinancialDataViewModel::class.java)
 
