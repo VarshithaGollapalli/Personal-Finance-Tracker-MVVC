@@ -17,6 +17,8 @@
     <string name="financial_data_Amount">Amount</string>
     <string name="financial_data_date">Date</string>
     <string name="financial_data_type">Type</string>
+    <string name="financial_income">Income</string>
+    <string name="financial_expense">Expense</string>
 
     <string name="history_SortbyIncome">Sort by Income</string>
     <string name="history_SortByExpense">Sort by Expense</string>
@@ -28,6 +30,17 @@
     <string name="login_register_button">Register</string>
     <string name="login_emailId_hint">Email ID</string>
     <string name="login_password_hint">Password</string>
+
+    <string name="analysis_title">INSIGHTS</string>
+    <string name="analysis_expense">EXPENSE</string>
+    <string name="analysis_income">INCOME</string>
+
+    <string name="registration_title">REGISTRATION </string>
+    <string name="registration_enter_details">Please enter the below details </string>
+    <string name="registration_name">Enter your Name</string>
+    <string name="registration_emailId">Enter your Email Id</string>
+    <string name="registration_password">Enter your password</string>
+    <string name="registration_re_password">Re-Enter your Password</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

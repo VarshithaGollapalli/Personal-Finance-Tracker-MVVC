@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentDashboardBinding
+import com.capgemini.financetracker.R.*
 import com.capgemini.financetracker.viewmodel.FinancialDataViewModel
 
 class AnalysisFragment : Fragment() {
@@ -17,14 +18,18 @@ class AnalysisFragment : Fragment() {
     private lateinit var txtIncome: TextView
     private lateinit var expenseProgressBar: ProgressBar
     private lateinit var incomeProgressBar: ProgressBar
+    private lateinit var expensePercentage: TextView
+    private lateinit var incomePercentage: TextView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_analysis, container, false)
+        val view = inflater.inflate(layout.fragment_analysis, container, false)
         txtExpense = view.findViewById(R.id.textExpense)
         txtIncome = view.findViewById(R.id.textIncome)
+        expensePercentage = view.findViewById(R.id.percentageE)
+        incomePercentage = view.findViewById(R.id.percentageI)
         expenseProgressBar = view.findViewById(R.id.expenseBar)
         incomeProgressBar = view.findViewById(R.id.incomeBar)
         return view
@@ -42,14 +47,7 @@ class AnalysisFragment : Fragment() {
             totalExpense = expense
             updateProgressBars(totalExpense,totalIncome)
         })
-// updateProgressBars(totalExpense,totalIncome)
-//
-// financialDataViewModel.totalExpense.observe(viewLifecycleOwner, Observer { expense ->
-// binding.expenseT.text = "Total Expense: $expense"
-// })
-// financialDataViewModel.ExpenseAndIncome.observe(viewLifecycleOwner) { transactions ->
-// val (totalExpense, totalIncome) = financialDataViewModel.ExpenseAndIncome(transactions)
-// }
+
 
     }
     private fun updateProgressBars(totalExpense: Double, totalIncome: Double) {
@@ -58,5 +56,9 @@ class AnalysisFragment : Fragment() {
         incomeProgressBar.max = maxProgress
         expenseProgressBar.progress = totalExpense.toInt()
         incomeProgressBar.progress = totalIncome.toInt()
+        val percentExpense = (totalExpense / maxProgress) * 100
+        val percentIncome = (totalIncome / maxProgress) * 100
+        expensePercentage.text = "${String.format("%.2f", percentExpense)}%"
+        incomePercentage.text = "${String.format("%.2f", percentIncome)}%"
     }
 }

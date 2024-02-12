@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_margin_16">16dp</dimen>
+    <dimen name="constrain_60">60dp</dimen>
+    <dimen name="constrain_20">20dp</dimen>
+    <dimen name="constrain_150">150dp</dimen>
+    <dimen name="constrain_30">30dp</dimen>
+    <dimen name="constrain_24">24dp</dimen>
+    <dimen name="constrain_10">10dp</dimen>
 </resources>

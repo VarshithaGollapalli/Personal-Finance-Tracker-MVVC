@@ -32,6 +32,7 @@ class FinancialDataEntryFragment: Fragment() {
     var isAddedClicked = false
     lateinit var financeVM: FinancialDataViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -57,6 +58,7 @@ class FinancialDataEntryFragment: Fragment() {
         submitButton=view.findViewById(R.id.submitB)
         radioButtonIncome = view.findViewById(R.id.incomeRB)
         radioButtonExpense = view.findViewById(R.id.expenseRB)
+        radioGroupType=view.findViewById(R.id.radioGroup)
         Log.d("Financial data entry","first")
 
         dateEditText.setOnClickListener{
@@ -113,7 +115,7 @@ class FinancialDataEntryFragment: Fragment() {
                 else{
                     Toast.makeText(requireContext(),"Enter all fields",Toast.LENGTH_LONG).show()
                 }
-
+            radioGroupType.clearCheck()
             dateEditText.text.clear()
             amountEditText.text.clear()
             categoryEditText.text.clear()
