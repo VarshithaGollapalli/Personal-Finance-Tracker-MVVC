@@ -21,8 +21,6 @@ class FinancialDataViewModel(application: Application): AndroidViewModel(applica
     val currentBalance: LiveData<Double> = repo.currentBalance()
     val totalIncome: LiveData<Double> = repo.totalIncome()
     val totalExpense: LiveData<Double> = repo.totalExpense()
-    //val ExpenseAndIncome: LiveData<Pair<Double, Double>> = repo.ExpenseAndIncome()
-
     fun addData(
         id: Long,
         type: String,
@@ -38,10 +36,5 @@ class FinancialDataViewModel(application: Application): AndroidViewModel(applica
 
             isDataAdded.postValue(repo.addData(id, type, amount, category, description, date))
         }
-
     }
-
-//    fun ExpenseAndIncome(transactions: Pair<Double, Double>): Pair<Double,Double> {
-//        return repo.calculateExpenseAndIncome(transactions)
-//    }
 }

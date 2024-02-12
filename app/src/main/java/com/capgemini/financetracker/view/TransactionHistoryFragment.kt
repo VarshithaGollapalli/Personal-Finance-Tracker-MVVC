@@ -1,6 +1,5 @@
 package com.capgemini.financetracker.view
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -9,13 +8,11 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.R.id.imageView
 import com.capgemini.financetracker.viewmodel.FinancialDataViewModel
-import com.capgemini.personalfinanacetracker.model.FinancialDataEntry
 
 class TransactionHistoryFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
@@ -24,17 +21,11 @@ class TransactionHistoryFragment : Fragment() {
     lateinit var sortByExpenseButton: Button
     lateinit var entireDataButton: Button
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        Log.d("customtrans", "onCreate")
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("customtrans", "onCreateView")
         val view = inflater.inflate(R.layout.fragment_transaction_history_list, container, false)
 
         recyclerView = view.findViewById(R.id.rView)
@@ -67,9 +58,5 @@ class TransactionHistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("customtrans", "onViewCreated")
-
     }
-
-
 }

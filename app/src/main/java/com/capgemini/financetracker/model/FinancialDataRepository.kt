@@ -3,10 +3,11 @@ package com.capgemini.personalfinanacetracker.model
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import com.capgemini.financetracker.model.FinancialDataDatabase
 
 class FinancialDataRepository(ctx:Context) {
 
-    val finDao = FinancialDataDatabase.getInstance(ctx).finaceDao()
+    val finDao = FinancialDataDatabase.getInstance(ctx).financeDao()
 
     suspend fun addData(
         id: Long,

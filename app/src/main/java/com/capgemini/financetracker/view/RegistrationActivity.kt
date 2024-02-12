@@ -10,7 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.capgemini.financetracker.R
 import com.capgemini.personalfinanacetracker.model.Credentials
-import com.capgemini.personalfinanacetracker.model.FinancialDataDatabase
+import com.capgemini.financetracker.model.FinancialDataDatabase
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -74,7 +74,7 @@ class RegistrationActivity : AppCompatActivity() {
 
 
                 CoroutineScope(Dispatchers.Default).launch {
-                    val psonDao=FinancialDataDatabase.getInstance(this@RegistrationActivity).finaceDao()
+                    val psonDao= FinancialDataDatabase.getInstance(this@RegistrationActivity).financeDao()
 
                     try {
                         psonDao.addUser(Credentials(personname,mail,passwords.toInt(),confirmpassword.toInt()))

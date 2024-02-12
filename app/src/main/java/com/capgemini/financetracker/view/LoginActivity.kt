@@ -80,7 +80,6 @@ class LoginActivity : AppCompatActivity() {
                 val editor=pref.edit()
                 editor.putString("emailId",emailid)
                 editor.commit()
-                Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show()
 
                 CoroutineScope(Dispatchers.Default).launch {
                     Log.d("LoginActivity", "first")
