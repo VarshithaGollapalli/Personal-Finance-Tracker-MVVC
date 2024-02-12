@@ -32,19 +32,10 @@ class FinancialDataEntryFragment: Fragment() {
     var isAddedClicked = false
     lateinit var financeVM: FinancialDataViewModel
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_financial_data_entry, container, false)
     }

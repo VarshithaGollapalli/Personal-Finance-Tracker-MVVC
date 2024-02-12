@@ -7,15 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentTransactionHistoryBinding
-
-import com.capgemini.financetracker.view.placeholder.PlaceholderContent.PlaceholderItem
 import com.capgemini.personalfinanacetracker.model.FinancialDataEntry
-import com.capgemini.personalfinanacetracker.model.TransactionData
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
+
 class TransactionHistoryAdapter(
     private var values: List<FinancialDataEntry>
 ) : RecyclerView.Adapter<TransactionHistoryAdapter.ViewHolder>() {

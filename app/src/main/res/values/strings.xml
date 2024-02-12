@@ -36,6 +36,7 @@
     <string name="analysis_title">INSIGHTS</string>
     <string name="analysis_expense">EXPENSE</string>
     <string name="analysis_income">INCOME</string>
+    <string name="entire_data">All</string>
 
     <string name="registration_title">REGISTRATION </string>
     <string name="registration_enter_details">Please enter the below details </string>

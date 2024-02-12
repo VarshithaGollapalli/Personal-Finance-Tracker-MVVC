@@ -51,9 +51,6 @@ class RegistrationActivity : AppCompatActivity() {
             //val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$"
             val validatepassword=passwords.length>=8&&passwords.length<=16
 
-
-
-
             //validation for passwords...
 
             if(!validatepassword){
@@ -99,8 +96,6 @@ class RegistrationActivity : AppCompatActivity() {
 
             val intent=Intent(this, LoginActivity::class.java)
             startActivity(intent)
-//            intent.putExtra("name",0)
-            //Toast.makeText(this, "Registration successful", Toast.LENGTH_LONG).show()
 
         }
 

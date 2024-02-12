@@ -11,10 +11,10 @@ import androidx.room.Query
 interface FinancialDataDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addData(dataentry:FinancialDataEntry)
+    fun addData(dataEntry:FinancialDataEntry)
 
     @Insert
-    fun addUser(pson:Credentials)
+    fun addUser(pSon:Credentials)
 
     @Query("select * from credentials where email=:mail and password=:pass")
     fun getUser(mail:String,pass:Int):Credentials?

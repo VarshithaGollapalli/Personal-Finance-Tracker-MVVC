@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
                 sharedPreference.edit().remove("emailId").apply()
                 Log.d("logout", "logout")
                 LogoutDialog().show(supportFragmentManager,"logout_dialog")
-                //return true
             }
         }
         return super.onOptionsItemSelected(item)

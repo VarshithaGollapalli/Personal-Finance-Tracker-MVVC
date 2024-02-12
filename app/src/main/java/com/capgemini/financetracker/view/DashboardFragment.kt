@@ -20,22 +20,6 @@ class DashboardFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentDashboardBinding.inflate(layoutInflater)
-
-//        val mHost = requireActivity()
-//        mHost.addMenuProvider(object : MenuProvider {
-//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-//                if(menu.findItem(R.id.sort_expense)!= null || menu.findItem(R.id.sort_income)!= null) {
-//
-//                    menu.findItem(R.id.sort_income)?.isVisible = false
-//                    menu.findItem(R.id.sort_expense)?.isVisible = false
-//                }
-//            }
-//
-//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-//                return false
-//            }
-//
-//        })
     }
 
     override fun onCreateView(
@@ -45,8 +29,6 @@ class DashboardFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  FragmentDashboardBinding.inflate(inflater, container, false)
         val root = binding.root
-
-
         return root
     }
 
@@ -57,7 +39,6 @@ class DashboardFragment : Fragment() {
         val userEmail=sharedPreferences.getString("emailId","")
         val emailTextView:TextView=view.findViewById(R.id.emailIdE)
         emailTextView.text=userEmail
-
 
         financeVM = ViewModelProvider(this).get(FinancialDataViewModel::class.java)
 
@@ -72,7 +53,5 @@ class DashboardFragment : Fragment() {
         financeVM.totalExpense.observe(viewLifecycleOwner, Observer { expense ->
             binding.expenseT.text = "Total Expense ₹ $expense"
         })
-
     }
-
 }

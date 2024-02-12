@@ -28,13 +28,10 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="80dp"
         android:text="@string/history_SortbyIncome"
         android:textColor="#090909"
         app:layout_constraintEnd_toStartOf="@+id/sExpB"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -42,10 +39,21 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="@string/history_SortByExpense"
         android:textColor="#0C0C0C"
         app:layout_constraintBottom_toBottomOf="@+id/sIncB"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sIncB" />
+
+    <Button
+        android:id="@+id/allB"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/entire_data"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/sIncB"
+        app:layout_constraintEnd_toStartOf="@+id/sIncB"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/sIncB" />
 </androidx.constraintlayout.widget.ConstraintLayout>

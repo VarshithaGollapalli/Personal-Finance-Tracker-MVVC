@@ -22,8 +22,5 @@ abstract class FinancialDataDatabase : RoomDatabase() {
                 FinancialDataDatabase::class.java,
                 "financialRecord.db").build()
         }
-
-
     }
-
 }

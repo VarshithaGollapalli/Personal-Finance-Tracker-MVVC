@@ -13,7 +13,6 @@ class LogoutDialog(): DialogFragment() {
         builder.setMessage("Do you want to Logout?")
         builder.setPositiveButton("YES") { _, _ ->
             activity?.finish()
-            //val intent = //to login page
         }
         builder.setNegativeButton("NO") { dlg, _ ->
             dlg.cancel()
