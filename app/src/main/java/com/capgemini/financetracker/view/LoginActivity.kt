@@ -11,7 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.capgemini.financetracker.R
-import com.capgemini.personalfinanacetracker.model.FinancialDataRepository
+import com.capgemini.financetracker.model.FinancialDataRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var emailidEditText: EditText
     lateinit var passwordEditText: EditText
 
-    lateinit var repo:FinancialDataRepository
+    lateinit var repo: FinancialDataRepository
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         val emailId=pref.getString("emailId","")
         emailidEditText.setText(emailId)
 
-        repo=FinancialDataRepository(this)
+        repo= FinancialDataRepository(this)
 
 
         loginOnClick()
@@ -86,12 +86,9 @@ class LoginActivity : AppCompatActivity() {
 
                     try {
                         repo.getPersonEmailWithException("$emailid", password.toInt())
-                        CoroutineScope(Dispatchers.Main).launch{
-
-                            Log.d("LoginActivity", "second")
                             val intent=Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(intent)
-                        }
+
 
                     } catch (err: Exception) {
                         CoroutineScope(Dispatchers.Main).launch {

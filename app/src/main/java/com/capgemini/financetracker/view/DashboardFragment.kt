@@ -17,10 +17,6 @@ class DashboardFragment : Fragment() {
     lateinit var binding: FragmentDashboardBinding
     private lateinit var financeVM: FinancialDataViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = FragmentDashboardBinding.inflate(layoutInflater)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

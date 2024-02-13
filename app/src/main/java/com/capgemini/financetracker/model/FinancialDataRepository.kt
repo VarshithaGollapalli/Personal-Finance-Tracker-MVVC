@@ -1,9 +1,10 @@
-package com.capgemini.personalfinanacetracker.model
+package com.capgemini.financetracker.model
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import com.capgemini.financetracker.model.FinancialDataDatabase
+import com.capgemini.personalfinanacetracker.model.Credentials
+import com.capgemini.personalfinanacetracker.model.FinancialDataEntry
 
 class FinancialDataRepository(ctx:Context) {
 
@@ -60,7 +61,7 @@ class FinancialDataRepository(ctx:Context) {
     private fun calculateCurrentBalance(financeList: List<FinancialDataEntry>): Double {
         var balance = 0.0
         financeList.forEach { entry ->
-            when (entry.type.lowercase()) {
+            when (entry.type) {
                 "income" -> balance += entry.amount
                 "expense" -> balance -= entry.amount
             }
@@ -74,7 +75,6 @@ class FinancialDataRepository(ctx:Context) {
 
     private fun calculateTotalIncome(financeList: List<FinancialDataEntry>): Double {
         var income = 0.0
-        var expense = 0.0
         financeList.forEach { entry ->
             if (entry.type.equals("income")) {
                 income += entry.amount
