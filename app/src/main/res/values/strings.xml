@@ -6,6 +6,11 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="menu_logout">Logout</string>
 
+    <string name="confirmation_title">Confirmation</string>
+    <string name="logout_msg">Do you want to logout?</string>
+    <string name="yes_button">YES</string>
+    <string name="no_button">NO</string>
+
     <string name="dashboard_hello">Hello,</string>
     <string name="dashboard_account">Account</string>
     <string name="dashboard_income">Total Income</string>
