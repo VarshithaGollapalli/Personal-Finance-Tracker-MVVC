@@ -3,6 +3,7 @@ package com.capgemini.financetracker.model
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import androidx.room.PrimaryKey
 import com.capgemini.personalfinanacetracker.model.Credentials
 import com.capgemini.personalfinanacetracker.model.FinancialDataEntry
 
@@ -39,6 +40,39 @@ class FinancialDataRepository(ctx:Context) {
         return isAdded
 
     }
+
+
+    suspend fun addUser(name:String,
+                        email:String,
+                        password:Int,
+                        confirmpassword:Int):Boolean{
+
+        var isAdded=false
+
+
+        try {
+
+            finDao.addUser(Credentials(name,email,password,confirmpassword))
+            isAdded=true
+
+        }catch (err:Exception){
+
+            isAdded=false
+
+        }
+
+
+
+        return isAdded
+
+    }
+
+    suspend fun getUser(mail: String,pass:Int):Credentials? {
+        return finDao.getUser(mail, pass)
+    }
+
+
+
 
 
     fun getPersonEmailWithException(mail: String, pass: Int): Credentials {

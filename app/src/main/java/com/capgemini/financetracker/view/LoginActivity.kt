@@ -10,8 +10,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.model.FinancialDataRepository
+import com.capgemini.financetracker.viewmodel.FinancialDataViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,23 +25,25 @@ class LoginActivity : AppCompatActivity() {
     lateinit var emailidEditText: EditText
     lateinit var passwordEditText: EditText
 
-    lateinit var repo: FinancialDataRepository
+    lateinit var financeVm:FinancialDataViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loginButton = findViewById(R.id.button2)
+        loginButton = findViewById(R.id.loginB)
 
         emailidEditText = findViewById(R.id.EmailAddressE)
         passwordEditText = findViewById(R.id.PasswordE)
+
+        financeVm = ViewModelProvider(this).get(FinancialDataViewModel::class.java)
 
         val pref=getSharedPreferences("setting", MODE_PRIVATE)
         val emailId=pref.getString("emailId","")
         emailidEditText.setText(emailId)
 
-        repo= FinancialDataRepository(this)
+        //repo= FinancialDataRepository(this)
 
 
         loginOnClick()
@@ -85,9 +89,9 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("LoginActivity", "first")
 
                     try {
-                        repo.getPersonEmailWithException("$emailid", password.toInt())
-                            val intent=Intent(this@LoginActivity, MainActivity::class.java)
-                            startActivity(intent)
+                        financeVm.getUser("$emailid", password.toInt())
+                        val intent=Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
 
 
                     } catch (err: Exception) {
