@@ -103,6 +103,9 @@ class FinancialDataEntryFragment: Fragment() {
                     financeVM.addData(id = 0, type, amount, category, description, date)
                 }
             }
+            else{
+                Toast.makeText(requireContext(),"Enter all fields",Toast.LENGTH_LONG).show()
+            }
             radioGroupType.clearCheck()
             dateEditText.text.clear()
             amountEditText.text.clear()
