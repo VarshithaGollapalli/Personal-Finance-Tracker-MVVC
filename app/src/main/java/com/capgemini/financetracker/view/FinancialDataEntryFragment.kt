@@ -79,7 +79,6 @@ class FinancialDataEntryFragment: Fragment() {
             val category = categoryEditText.text.toString()
             val description = descriptionEditText.text.toString()
             val date = dateEditText.text.toString()
-
             if (radioGroupType.checkedRadioButtonId==R.id.incomeRB){
 
                 Log.d("FinancialDataEntryFragment","second")
@@ -104,10 +103,6 @@ class FinancialDataEntryFragment: Fragment() {
                     financeVM.addData(id = 0, type, amount, category, description, date)
                 }
             }
-            else{
-                Toast.makeText(requireContext(),"Enter all fields",Toast.LENGTH_LONG).show()
-            }
-
             radioGroupType.clearCheck()
             dateEditText.text.clear()
             amountEditText.text.clear()
