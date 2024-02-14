@@ -24,7 +24,6 @@ class FinancialDataViewModel(application: Application): AndroidViewModel(applica
     val currentBalance: LiveData<Double> = repo.currentBalance()
     val totalIncome: LiveData<Double> = repo.totalIncome()
     val totalExpense: LiveData<Double> = repo.totalExpense()
-   // var isAdded=MutableLiveData<Boolean>(false)
     fun addData(
         id: Long,
         type: String,
@@ -34,9 +33,8 @@ class FinancialDataViewModel(application: Application): AndroidViewModel(applica
         date: String
     ) {
 
-        //launch Coroutine
-
-        CoroutineScope(Dispatchers.Main).launch(Dispatchers.Default) {
+        //launch viemodel
+       viewModelScope.launch(Dispatchers.Default) {
 
             isDataAdded.postValue(repo.addData(id, type, amount, category, description, date))
         }
@@ -45,15 +43,12 @@ class FinancialDataViewModel(application: Application): AndroidViewModel(applica
     fun addUser(name:String,
                 email:String,
                 password:Int,
-                confirmpassword:Int){
+                confirmPassword:Int){
         viewModelScope.launch(Dispatchers.Default) {
 
-            isDataAdded.postValue(repo.addUser(name, email, password, confirmpassword))
+            isDataAdded.postValue(repo.addUser(name, email, password, confirmPassword))
         }
     }
-
-
-
     fun getUser(email:String,password:Int){
         viewModelScope.launch(Dispatchers.Default){
             repo.getPersonEmailWithException(email,password)
