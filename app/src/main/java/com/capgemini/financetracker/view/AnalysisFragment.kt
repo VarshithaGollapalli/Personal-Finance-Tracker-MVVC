@@ -10,29 +10,20 @@ import androidx.lifecycle.ViewModelProvider
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.FragmentDashboardBinding
 import com.capgemini.financetracker.R.*
+import com.capgemini.financetracker.databinding.FragmentAnalysisBinding
 import com.capgemini.financetracker.viewmodel.FinancialDataViewModel
 
 class AnalysisFragment : Fragment() {
     private lateinit var financialDataViewModel:FinancialDataViewModel
-    private lateinit var txtExpense: TextView
-    private lateinit var txtIncome: TextView
-    private lateinit var expenseProgressBar: ProgressBar
-    private lateinit var incomeProgressBar: ProgressBar
-    private lateinit var expensePercentage: TextView
-    private lateinit var incomePercentage: TextView
+    lateinit var binding: FragmentAnalysisBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(layout.fragment_analysis, container, false)
-        txtExpense = view.findViewById(R.id.textExpense)
-        txtIncome = view.findViewById(R.id.textIncome)
-        expensePercentage = view.findViewById(R.id.percentageE)
-        incomePercentage = view.findViewById(R.id.percentageI)
-        expenseProgressBar = view.findViewById(R.id.expenseBar)
-        incomeProgressBar = view.findViewById(R.id.incomeBar)
-        return view
+        binding =  FragmentAnalysisBinding.inflate(inflater, container, false)
+        val root = binding.root
+        return root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,13 +43,13 @@ class AnalysisFragment : Fragment() {
     }
     private fun updateProgressBars(totalExpense: Double, totalIncome: Double) {
         val maxProgress = (totalExpense + totalIncome).toInt()
-        expenseProgressBar.max = maxProgress
-        incomeProgressBar.max = maxProgress
-        expenseProgressBar.progress = totalExpense.toInt()
-        incomeProgressBar.progress = totalIncome.toInt()
+        binding.expenseBar.max = maxProgress
+        binding.incomeBar.max = maxProgress
+        binding.expenseBar.progress = totalExpense.toInt()
+        binding.incomeBar.progress = totalIncome.toInt()
         val percentExpense = (totalExpense / maxProgress) * 100
         val percentIncome = (totalIncome / maxProgress) * 100
-        expensePercentage.text = "${String.format("%.2f", percentExpense)}%"
-        incomePercentage.text = "${String.format("%.2f", percentIncome)}%"
+        binding.percentageE.text = "${String.format("%.2f", percentExpense)}%"
+        binding.percentageI.text = "${String.format("%.2f", percentIncome)}%"
     }
 }
