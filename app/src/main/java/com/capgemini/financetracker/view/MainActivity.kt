@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capgemini.financetracker.R
 import com.capgemini.financetracker.databinding.ActivityMainBinding
-import com.capgemini.personalfinanacetracker.model.LogoutDialog
+import com.capgemini.financetracker.model.LogoutDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

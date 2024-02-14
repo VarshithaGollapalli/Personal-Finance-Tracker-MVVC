@@ -1,4 +1,4 @@
-package com.capgemini.personalfinanacetracker.model
+package com.capgemini.financetracker.model
 
 import android.app.Dialog
 import android.os.Bundle
